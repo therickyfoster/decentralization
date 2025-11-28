@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Gatekeepers: The Liberation Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .category {
+            padding: 30px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .category:last-child {
+            border-bottom: none;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .category-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+        
+        .category-title {
+            font-size: 1.8em;
+            color: #2a5298;
+            flex-grow: 1;
+        }
+        
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .platform-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .platform-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2a5298;
+            margin-bottom: 10px;
+        }
+        
+        .platform-fee {
+            color: #dc3545;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .platform-issue {
+            color: #6c757d;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .alternatives {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #dee2e6;
+        }
+        
+        .alternatives-label {
+            font-size: 0.85em;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .alternatives-list {
+            font-size: 0.9em;
+            color: #495057;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .status-needed {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-exists {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        footer {
+            background: #2a5298;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .mission {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Platform Gatekeepers: The Liberation Checklist</h1>
+            <p>Mapping the digital middlemen extracting wealth from everyday transactions</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalPlatforms">0</div>
+                <div class="stat-label">Gatekeeping Platforms</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$XXB</div>
+                <div class="stat-label">Annual Fees Extracted</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="alternativesCount">0</div>
+                <div class="stat-label">Open Alternatives Needed</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🚗</div>
+                <h2 class="category-title">Transportation & Mobility</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Uber</div>
+                    <div class="platform-fee">Takes 25-30% per ride</div>
+                    <div class="platform-issue">Drivers earn median $15-20/hr after expenses. Surge pricing exploits demand.</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Cooperative ride-sharing DAO, peer-to-peer ride matching, local driver cooperatives</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Lyft</div>
+                    <div class="platform-fee">Takes 20-28% per ride</div>
+                    <div class="platform-issue">Similar model to Uber. Drivers bear all vehicle costs and risks.</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Driver-owned platform, blockchain-based ride matching</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🍔</div>
+                <h2 class="category-title">Food Delivery</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">DoorDash</div>
+                    <div class="platform-fee">Takes 15-30% from restaurants + customer fees</div>
+                    <div class="platform-issue">Can triple order costs. Restaurants see minimal profit. Drivers make $12-15/hr.</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Restaurant-owned delivery cooperative, local delivery networks, commission-free ordering</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Uber Eats</div>
+                    <div class="platform-fee">Takes 15-30% from restaurants + multiple customer fees</div>
+                    <div class="platform-issue">Hidden fees, price markups, minimal driver compensation</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Community-owned delivery app, direct restaurant ordering portal</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Skip The Dishes / Grubhub</div>
+                    <div class="platform-fee">Takes 15-25% commission</div>
+                    <div class="platform-issue">Forces restaurants onto platform or lose visibility</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open-source ordering system for restaurants</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🏠</div>
+                <h2 class="category-title">Housing & Accommodation</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Airbnb</div>
+                    <div class="platform-fee">Takes 3-5% from hosts + 14-20% from guests</div>
+                    <div class="platform-issue">Drives up local rents, reduces housing stock, questionable listings</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized booking protocol, host-owned platform, local accommodation networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">VRBO / Booking.com</div>
+                    <div class="platform-fee">Takes 5-15% commissions</div>
+                    <div class="platform-issue">Lock-in fees, payment processing fees, listing fees</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Federated accommodation network</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">💼</div>
+                <h2 class="category-title">Freelance & Service Marketplaces</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Fiverr</div>
+                    <div class="platform-fee">Takes 20% from freelancers + payment processing fees</div>
+                    <div class="platform-issue">Race to the bottom pricing. Freelancers undervalued globally.</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Worker-owned freelance cooperative, reputation-based peer network</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Upwork</div>
+                    <div class="platform-fee">Takes 5-20% sliding scale from freelancers</div>
+                    <div class="platform-issue">Expensive for freelancers, algorithmic favoritism</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized work marketplace, blockchain-verified credentials</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">TaskRabbit</div>
+                    <div class="platform-fee">Takes 15-30% commission</div>
+                    <div class="platform-issue">Local services marked up significantly</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Community task board, local service networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📺</div>
+                <h2 class="category-title">Media & Content</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Patreon</div>
+                    <div class="platform-fee">Takes 5-12% + payment processing fees</div>
+                    <div class="platform-issue">Creators lose 8-15% of earnings to fees</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized creator support platform, crypto-native subscriptions</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Substack</div>
+                    <div class="platform-fee">Takes 10% of subscription revenue</div>
+                    <div class="platform-issue">Writers locked into platform, limited export options</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Ghost (open-source), WriteFreely, own WordPress setup</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">YouTube</div>
+                    <div class="platform-fee">Takes 45% of ad revenue</div>
+                    <div class="platform-issue">Algorithm controls visibility, demonetization without appeal</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">PeerTube (federated), Odysee (blockchain), needs better monetization</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Spotify</div>
+                    <div class="platform-fee">Pays $0.003-0.005 per stream to artists</div>
+                    <div class="platform-issue">Musicians need millions of streams for living wage</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Artist-owned streaming cooperative, direct fan support platform</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🛒</div>
+                <h2 class="category-title">E-Commerce & Marketplaces</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Amazon Marketplace</div>
+                    <div class="platform-fee">Takes 8-45% referral fees + fulfillment fees</div>
+                    <div class="platform-issue">Forces small businesses onto platform, then competes with them using their data</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized marketplace protocol, seller cooperatives, local commerce networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Etsy</div>
+                    <div class="platform-fee">Takes 6.5% transaction + $0.20 listing + 3% payment processing</div>
+                    <div class="platform-issue">Handmade sellers lose 10%+ per sale</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Artisan-owned marketplace, blockchain-based craft commerce</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">eBay</div>
+                    <div class="platform-fee">Takes 10-15% final value fees</div>
+                    <div class="platform-issue">High fees for peer-to-peer sales</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized auction platform, local trading networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">💳</div>
+                <h2 class="category-title">Payment Processing</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Stripe</div>
+                    <div class="platform-fee">2.9% + $0.30 per transaction</div>
+                    <div class="platform-issue">Unavoidable fees for online payments</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Crypto payments (still has gas fees), ACH transfers (slower), BTCPay Server</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">PayPal</div>
+                    <div class="platform-fee">2.99% + fees for transactions</div>
+                    <div class="platform-issue">Account freezes, holds funds, high international fees</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open payment protocol, peer-to-peer payment networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📅</div>
+                <h2 class="category-title">Productivity & Business Tools</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Calendly</div>
+                    <div class="platform-fee">$8-16/month per user</div>
+                    <div class="platform-issue">Basic scheduling behind paywall</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Cal.com (open-source), Easy!Appointments</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Zoom</div>
+                    <div class="platform-fee">$15-20/month for unlimited meetings</div>
+                    <div class="platform-issue">40-min limit on free tier</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Jitsi (open-source), BigBlueButton, Element (Matrix)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Slack</div>
+                    <div class="platform-fee">$7.25-12.50/user/month</div>
+                    <div class="platform-issue">Message history limited on free tier</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Mattermost, Rocket.Chat, Zulip (all open-source)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Notion</div>
+                    <div class="platform-fee">$8-15/user/month for team features</div>
+                    <div class="platform-issue">Data lock-in, limited offline access</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">AppFlowy, Outline, Obsidian (local-first)</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎨</div>
+                <h2 class="category-title">Creative Software</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Adobe Creative Cloud</div>
+                    <div class="platform-fee">$54.99/month subscription</div>
+                    <div class="platform-issue">$660/year for tools you used to own perpetually</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">GIMP, Krita, Inkscape, Blender (all free & open-source)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Figma</div>
+                    <div class="platform-fee">$12-45/editor/month</div>
+                    <div class="platform-issue">Essential design tool now subscription-based</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Penpot (open-source), Excalidraw</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Canva Pro</div>
+                    <div class="platform-fee">$12.99/month or $119.99/year</div>
+                    <div class="platform-issue">Most useful features paywalled</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open-source template-based design tool</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎓</div>
+                <h2 class="category-title">Education & Learning</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Coursera / Udemy</div>
+                    <div class="platform-fee">Takes 50-97% of course revenue from instructors</div>
+                    <div class="platform-issue">Instructors lose most of earnings, students pay high prices</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Instructor-owned course platform, decentralized learning marketplace</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Masterclass</div>
+                    <div class="platform-fee">$120-240/year subscription</div>
+                    <div class="platform-issue">Expert knowledge behind expensive paywall</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open educational resource platform, skill-sharing networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎮</div>
+                <h2 class="category-title">Gaming & Entertainment</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Steam</div>
+                    <div class="platform-fee">Takes 30% from game developers</div>
+                    <div class="platform-issue">Industry standard but heavy toll on indie devs</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Itch.io (lower fees), Epic (12% fee), needs fully open alternative</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Twitch</div>
+                    <div class="platform-fee">Takes 50% of subscription revenue from streamers</div>
+                    <div class="platform-issue">Streamers lose half their earnings to platform</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized streaming platform, streamer-owned cooperative</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🏥</div>
+                <h2 class="category-title">Healthcare & Wellness</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Teladoc / Doctor On Demand</div>
+                    <div class="platform-fee">$75-150 per virtual consultation</div>
+                    <div class="platform-issue">High fees for basic telehealth</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Community health networks, open-source telehealth platforms</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">GoodRx</div>
+                    <div class="platform-fee">Takes fees from pharmacies for referrals</div>
+                    <div class="platform-issue">Middleman between patients and pharmacies</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Direct pharmacy price transparency platform</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🏦</div>
+                <h2 class="category-title">Financial Services</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Robinhood / Trading Apps</div>
+                    <div class="platform-fee">Payment for order flow, spreads</div>
+                    <div class="platform-issue">Hidden costs in "free" trading, gamification of investing</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized exchange protocols, community investment DAOs</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Venmo / Cash App</div>
+                    <div class="platform-fee">3% for credit cards, instant transfer fees</div>
+                    <div class="platform-issue">Data mining, surveillance of transactions</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Bitcoin Lightning Network, privacy-focused crypto wallets</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Remittance Services (Western Union, MoneyGram)</div>
+                    <div class="platform-fee">5-15% fees on international transfers</div>
+                    <div class="platform-issue">Exploits immigrant workers sending money home</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Crypto remittance, Wise (lower fees), needs truly open solution</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Quickbooks / FreshBooks</div>
+                    <div class="platform-fee">$15-200/month subscriptions</div>
+                    <div class="platform-issue">Basic accounting held hostage by subscription</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">GnuCash, Wave (limited free tier), needs better UX</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📱</div>
+                <h2 class="category-title">Mobile App Ecosystems</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Apple App Store</div>
+                    <div class="platform-fee">30% on all transactions (15% small business)</div>
+                    <div class="platform-issue">Forced payment system, app rejection without appeal</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Legal Challenges:</div>
+                        <div class="alternatives-list">Epic lawsuit, EU Digital Markets Act, sideloading advocacy</div>
+                    </div>
+                    <span class="status status-needed">REGULATORY PRESSURE NEEDED</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Google Play Store</div>
+                    <div class="platform-fee">15-30% on all transactions</div>
+                    <div class="platform-issue">Similar monopolistic control as Apple</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">F-Droid (open-source apps), sideloading (Android only)</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎪</div>
+                <h2 class="category-title">Events & Ticketing</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Ticketmaster / Live Nation</div>
+                    <div class="platform-fee">25-40% in fees on ticket face value</div>
+                    <div class="platform-issue">Monopoly on live events, service fees on top of delivery fees</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Blockchain ticketing (NFTs), artist-direct sales, venue-owned platforms</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Eventbrite</div>
+                    <div class="platform-fee">3.5% + $1.59 per ticket + payment processing</div>
+                    <div class="platform-issue">Fees add up quickly for small event organizers</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open-source event management platform</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🏗️</div>
+                <h2 class="category-title">Real Estate & Property</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Zillow / Redfin</div>
+                    <div class="platform-fee">Referral fees to agents, data harvesting</div>
+                    <div class="platform-issue">Control housing market data, manipulate prices</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Public housing data repository, blockchain property records</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">CoStar / LoopNet (Commercial Real Estate)</div>
+                    <div class="platform-fee">Expensive subscriptions for basic property data</div>
+                    <div class="platform-issue">Gatekeeping public record information</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open commercial real estate data platform</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🚚</div>
+                <h2 class="category-title">Logistics & Shipping</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Amazon FBA (Fulfillment)</div>
+                    <div class="platform-fee">Storage fees + fulfillment fees + long-term storage penalties</div>
+                    <div class="platform-issue">Small businesses forced to use Amazon's costly fulfillment</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Cooperative fulfillment networks, local distribution hubs</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Flexport / Freight Forwarders</div>
+                    <div class="platform-fee">Opaque markup on shipping costs</div>
+                    <div class="platform-issue">Middlemen in international trade</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Transparent freight marketplace, blockchain bill of lading</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">💼</div>
+                <h2 class="category-title">Hiring & Recruitment</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">LinkedIn Recruiter</div>
+                    <div class="platform-fee">$8,000-15,000/year per recruiter seat</div>
+                    <div class="platform-issue">Paywalls basic job search and networking features</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized professional network, verified skill repositories</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Indeed / ZipRecruiter</div>
+                    <div class="platform-fee">Pay-per-application or subscription models</div>
+                    <div class="platform-issue">Job seekers bombarded with irrelevant postings</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Community job boards, skill-based matching</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📊</div>
+                <h2 class="category-title">Data & Analytics</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Google Analytics / Adobe Analytics</div>
+                    <div class="platform-fee">Free (data mining) or $150,000+/year</div>
+                    <div class="platform-issue">Either give up privacy or pay massive enterprise fees</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Plausible, Matomo, Umami (privacy-focused, open-source)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Salesforce</div>
+                    <div class="platform-fee">$25-300+/user/month</div>
+                    <div class="platform-issue">Lock-in, data extraction, expensive for small businesses</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">SuiteCRM, Odoo, ERPNext (open-source but need better UX)</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🔒</div>
+                <h2 class="category-title">Identity & Verification</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Background Check Services (Checkr, etc.)</div>
+                    <div class="platform-fee">$30-100 per background check</div>
+                    <div class="platform-issue">Gatekeeping employment through expensive verification</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Self-sovereign identity, blockchain credentials, public records access</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Credit Bureaus (Equifax, Experian, TransUnion)</div>
+                    <div class="platform-fee">Control credit scores, sell your data</div>
+                    <div class="platform-issue">Private companies control financial access, frequent data breaches</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized credit scoring, public credit registry</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📚</div>
+                <h2 class="category-title">Knowledge & Research</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Academic Journal Publishers (Elsevier, Springer)</div>
+                    <div class="platform-fee">$30-50 per article or $1000s for subscriptions</div>
+                    <div class="platform-issue">Gatekeeping publicly-funded research, 30-40% profit margins</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Movements:</div>
+                        <div class="alternatives-list">Sci-Hub (piracy), arXiv, PubMed Central (open access)</div>
+                    </div>
+                    <span class="status status-needed">NEEDS MORE OPEN ACCESS</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Legal Research (Westlaw, LexisNexis)</div>
+                    <div class="platform-fee">$100-500/month per user</div>
+                    <div class="platform-issue">Gatekeeping access to law itself</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Free Law Project, CourtListener, needs better coverage</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🌐</div>
+                <h2 class="category-title">Domain & Web Infrastructure</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Domain Registrars (GoDaddy, Namecheap)</div>
+                    <div class="platform-fee">Annual fees + upsells + transfer locks</div>
+                    <div class="platform-issue">Control of internet namespace, predatory renewals</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Handshake protocol (decentralized DNS), ENS (Ethereum Name Service)</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Web Hosting (Bluehost, HostGator)</div>
+                    <div class="platform-fee">$3-30/month, lock-in contracts</div>
+                    <div class="platform-issue">Overselling resources, poor performance</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">IPFS, Filecoin, Arweave (decentralized storage), self-hosting</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎯</div>
+                <h2 class="category-title">Advertising & Marketing</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Google Ads / Facebook Ads</div>
+                    <div class="platform-fee">Variable CPC, auction system, minimum spends</div>
+                    <div class="platform-issue">Duopoly controls digital advertising, surveillance capitalism</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Decentralized ad networks, privacy-preserving ads (Brave BAT), direct publisher deals</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Mailchimp / Constant Contact</div>
+                    <div class="platform-fee">$13-350/month based on subscribers</div>
+                    <div class="platform-issue">Email list held hostage, expensive as lists grow</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Sendy (self-hosted), Mailtrain, Mautic (open-source)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🧬</div>
+                <h2 class="category-title">Emerging Tech & AI</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">ChatGPT Plus / Claude Pro</div>
+                    <div class="platform-fee">$20/month subscriptions</div>
+                    <div class="platform-issue">Paywalling advanced AI capabilities</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Llama (Meta), Mistral, local models via Ollama (free, open-weight)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Midjourney / DALL-E</div>
+                    <div class="platform-fee">$10-60/month for AI image generation</div>
+                    <div class="platform-issue">Creative tools behind subscription walls</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Stable Diffusion (open-source), ComfyUI, can run locally</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">⚖️</div>
+                <h2 class="category-title">Legal & Compliance</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">LegalZoom / Rocket Lawyer</div>
+                    <div class="platform-fee">$299-1,999 per filing + subscriptions</div>
+                    <div class="platform-issue">Commodifying basic legal forms with massive markups</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Open-source legal document templates, community legal aid networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">DocuSign</div>
+                    <div class="platform-fee">$10-40/month per user</div>
+                    <div class="platform-issue">Digital signatures shouldn't require monthly fees</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">DocuSeal (open-source), SignRequest, blockchain signatures</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🔐</div>
+                <h2 class="category-title">Security & Privacy</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">1Password / LastPass</div>
+                    <div class="platform-fee">$3-8/month per user</div>
+                    <div class="platform-issue">Password management behind paywall (security as SaaS)</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Bitwarden (open-source, freemium), KeePass (fully free)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Norton / McAfee Antivirus</div>
+                    <div class="platform-fee">$40-100/year subscriptions</div>
+                    <div class="platform-issue">Security theater, resource-heavy, predatory renewals</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Windows Defender (built-in), ClamAV (open-source), Linux (inherently more secure)</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📖</div>
+                <h2 class="category-title">Publishing & Books</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Kindle Unlimited / Audible</div>
+                    <div class="platform-fee">$9.99-14.95/month subscriptions</div>
+                    <div class="platform-issue">Authors paid pennies per page/listen, Amazon lock-in</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Libby (library apps), Standard Ebooks, Project Gutenberg, needs better author compensation</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Medium Membership</div>
+                    <div class="platform-fee">$5/month, takes 50% of writer earnings</div>
+                    <div class="platform-issue">Writers lose control and earnings</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Existing Alternatives:</div>
+                        <div class="alternatives-list">Ghost (open-source), WriteFreely, own website</div>
+                    </div>
+                    <span class="status status-exists">ALTERNATIVES EXIST</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎓</div>
+                <h2 class="category-title">Certifications & Testing</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Professional Certification Bodies</div>
+                    <div class="platform-fee">$200-1,500 per exam + renewals</div>
+                    <div class="platform-issue">Artificial barriers to employment, expensive gatekeeping</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Verifiable credentials on blockchain, portfolio-based assessment, skills badges</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Standardized Testing (SAT, GRE, GMAT)</div>
+                    <div class="platform-fee">$50-250 per test attempt</div>
+                    <div class="platform-issue">Gatekeeping education through expensive tests</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Alternative Approaches:</div>
+                        <div class="alternatives-list">Test-optional admissions movement, holistic evaluation</div>
+                    </div>
+                    <span class="status status-needed">SYSTEMIC CHANGE NEEDED</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🌱</div>
+                <h2 class="category-title">Environment & Agriculture</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">Agricultural Marketplaces</div>
+                    <div class="platform-fee">Takes 10-30% from farmers</div>
+                    <div class="platform-issue">Middlemen between farmers and consumers</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Farmer cooperatives, direct-to-consumer platforms, CSA networks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">Carbon Credit Marketplaces</div>
+                    <div class="platform-fee">Opaque pricing, verification costs</div>
+                    <div class="platform-issue">Greenwashing, inaccessible to small landowners</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Open Alternative Ideas:</div>
+                        <div class="alternatives-list">Transparent carbon markets, blockchain verification, community carbon banks</div>
+                    </div>
+                    <span class="status status-needed">NEEDS OPEN ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🎨</div>
+                <h2 class="category-title">Digital Assets & NFTs</h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">OpenSea / Rarible</div>
+                    <div class="platform-fee">2.5% marketplace fees</div>
+                    <div class="platform-issue">Centralized control of "decentralized" assets</div>
+                    <div class="alternatives">
+                        <div class="alternatives-label">Partial Alternatives:</div>
+                        <div class="alternatives-list">Looks Rare (0% fee), direct smart contract minting, needs better UX</div>
+                    </div>
+                    <span class="status status-needed">NEEDS BETTER ALTERNATIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🔧</div>
+                <h2 class="category-title">Implementation Framework</h2>
+            </div>
+            <div class="platform-grid" style="grid-template-columns: 1fr;">
+                <div class="platform-card" style="border-left: 4px solid #28a745;">
+                    <div class="platform-name">🎯 Priority Assessment Matrix</div>
+                    <div class="platform-issue" style="color: #333;">
+                        <strong>Evaluate each platform on:</strong><br>
+                        • Market Pain Level (1-10): How badly do users/workers suffer?<br>
+                        • Technical Feasibility (1-10): Can we build it with current tech?<br>
+                        • Network Effects Barrier (1-10): How hard to overcome chicken-egg problem?<br>
+                        • Regulatory Risk (1-10): Will incumbents sue or lobby against us?<br>
+                        • Revenue Sustainability (1-10): Can alternative be self-sustaining?
+                    </div>
+                </div>
+                
+                <div class="platform-card" style="border-left: 4px solid #007bff;">
+                    <div class="platform-name">🏗️ Building Blocks Needed</div>
+                    <div class="platform-issue" style="color: #333;">
+                        <strong>Core Infrastructure:</strong><br>
+                        • Identity layer (self-sovereign identity, decentralized auth)<br>
+                        • Reputation systems (portable, verifiable, not gameable)<br>
+                        • Payment rails (low-fee, instant, global)<br>
+                        • Governance frameworks (user-owned, democratic decision-making)<br>
+                        • Legal structures (cooperatives, DAOs, benefit corps)<br>
+                        • Dispute resolution (fair, transparent, community-driven)
+                    </div>
+                </div>
+                
+                <div class="platform-card" style="border-left: 4px solid #ffc107;">
+                    <div class="platform-name">⚠️ Common Failure Modes</div>
+                    <div class="platform-issue" style="color: #333;">
+                        <strong>Pitfalls to avoid:</strong><br>
+                        • Building too complex too fast (MVP first, always)<br>
+                        • Ignoring network effects (need critical mass strategy)<br>
+                        • Underestimating incumbent response (they will fight back)<br>
+                        • Poor UX (open alternatives die if they're harder to use)<br>
+                        • Volunteer burnout (need sustainability model from day 1)<br>
+                        • Mission drift (staying true to principles under pressure)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p class="mission">
+                <strong>Mission:</strong> Every platform listed here represents an opportunity to build 
+                something better—something owned by users, transparent in operation, and fair in compensation.
+            </p>
+            <p>💪 Let's knock them off one at a time. The tools exist. The need is real. The time is now.</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                Last Updated: November 2024 | Built for liberation, not profit<br>
+                <strong>Total Platforms Documented:</strong> <span id="totalPlatformsFooter">0</span> | 
+                <strong>Categories:</strong> <span id="totalCategories">0</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Count platforms (excluding implementation framework cards)
+        const categories = document.querySelectorAll('.category');
+        let platformCount = 0;
+        let categoryCount = 0;
+        
+        categories.forEach(cat => {
+            const title = cat.querySelector('.category-title').textContent;
+            if (!title.includes('Implementation Framework')) {
+                categoryCount++;
+                const cards = cat.querySelectorAll('.platform-card');
+                platformCount += cards.length;
+            }
+        });
+        
+        document.getElementById('totalPlatforms').textContent = platformCount;
+        document.getElementById('totalPlatformsFooter').textContent = platformCount;
+        document.getElementById('totalCategories').textContent = categoryCount;
+        
+        const neededAlternatives = document.querySelectorAll('.status-needed').length;
+        document.getElementById('alternativesCount').textContent = neededAlternatives;
+    </script>
+</body>
+</html>
